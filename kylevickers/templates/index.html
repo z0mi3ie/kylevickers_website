@@ -4,28 +4,64 @@
 <head>
 <meta charset="utf-8">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='uikit-2.25.0/css/uikit.min.css')}}">
+<script src="{{ url_for('static', filename='jquery-1.12.4/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='uikit-2.25.0/js/uikit.min.js') }}"></script>
 <title>kylevickers.io</title>
 </head>
 
 <body>
   <div class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
     
-    <div class="uk-container uk-container-center uk-width-1-2 uk-margin-top">
-      <h1 class="uk-text-center">Kyle Vickers</h1>
-      <h2 class="uk-text-center uk-text-muted">software developer</h2>
-    </div> 
+    <nav class="uk-navbar">
 
-    <ul class="uk-nav">
-      <li><a href="{{ url_for('pull', method='GET') }}">Pull Request Template</a></li>
-    </ul>
+      <!-- Brand part of navbar -->
+      <a class="uk-navbar-brand" href="{{ url_for('index', method='GET') }}">kylevickers.io</a></li>
 
-    <!-- Not sure if i want to include a picture or not -->
-    <!-- <img src="{{ url_for('static', filename='img/kyle_painting.jpg') }}" alt="Painting away"> -->
+      <!-- Left side of navbar -->
+      <ul class="uk-navbar-nav">
+        <li class="uk-parent" data-uk-dropdown>
+          <a href="">Utils</a>
+          <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li><a href="{{ url_for('pull', method='GET') }}">PR Helper</a></li>
+              <li><a href="#">SSH Key Generator</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+        
+      <!-- Right side of navbar -->
+      <div class="uk-navbar-flip">
+        <ul class="uk-navbar-nav">
+          <li><a href="https://github.com/z0mi3ie"><i class="uk-icon-github uk-icon-large uk-text-center"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/kylevickers89"><i class="uk-icon-linkedin uk-icon-large uk-text-center"></i></a></li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <hr>
     
-    <div class="uk-container uk-container-center uk-width-1-1 uk-margin-top uk-text-center">
-      <a href="https://github.com/z0mi3ie"><i class="uk-icon-github uk-icon-large"></i></a>
-      <a href="https://www.linkedin.com/in/kylevickers89"><i class="uk-icon-linkedin uk-icon-large"></i></a>
+    <!-- Changing content section -->
+    {% block body %}
+    <h1 class="uk-text-center">Kyle Vickers</h1>
+    <h2 class="uk-text-center uk-text-muted">software developer</h2>
+
+    <div class="uk-panel"> 
+      <h3 class="uk-panel-title">Welcome</h3>
+      <p>
+      Here you will find information about me, some of my current projects, and other related information.
+      </p>
+
+      <p>
+      Under 'Utils' you will find some some utilities I have written to make certain tasks easier. I am constantly expanding and changing the content there. All of them are used by me on a daily basis. 
+      </p>
     </div>
+    {% endblock %}
+
+    
 
   </div>
 </body>
