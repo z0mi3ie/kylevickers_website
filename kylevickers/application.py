@@ -17,30 +17,23 @@ def index():
 
 @app.route("/pull", methods=['POST', 'GET'])
 def pull():
-    # Create the pull request and display the string
+    # Create the pull request
     if request.method == 'POST':
-        formatted_response = create_pull_request(
-            summary=request.form['summary'],
-            ticket=request.form['ticket'],
+        return render_template('pr.html',
+                ticket_number=request.form['ticket_number'],
+                ticket_title=request.form['ticket_title'],
+                ticket_url=request.form['ticket_url'],
+                summary=request.form['summary'],
+                review_a=request.form['review_a'],
+                review_b=request.form['review_b'],
+                setup=request.form['setup'],
+                test=request.form['test'],
+                verify=request.form['verify'],
         )
-        print('Formatted Response...')
-        print(formatted_response)
-        return render_template('pr.html', output=formatted_response)
+
     # Display the PR template
     if request.method == 'GET':
         return render_template('pull.html')
-
-
-def create_pull_request(summary, ticket):
-    pull_request_format = """
-    # Summary
-    {summary}
-
-    # Ticket
-    {ticket}
-    """
-
-    return pull_request_format.format(summary=summary, ticket=ticket)
 
 # Start the debug server
 if __name__ == "__main__":
