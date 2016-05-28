@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="uk-panel">
+    <h3>Pull Request Title</h3>
+    [{{ ticket_number }}] {{ ticket_title }}
+
+    <h3>Pull Request Details</h3>
+    <p>Copy and paste the following into your github pull request.</p>
+
+    {% include 'pull/code.html' %}
+</div>
+{% endblock %}

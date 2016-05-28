@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="uk-panel">
+  <h1>Ticket Info</h1>
+  <p>Enter information for a pull request.</p>
+  <form id='pr_form' action="{{ url_for('pull') }}" method='POST'>
+    <dl>
+      <dt>Branch URL for Pull Request</dt>
+      <dd><input type=text name=git_branch_url></dd>
+      <dt>Ticket Number</dt>
+      <dd><input type=text name=ticket_number></dd>
+      <dt>Ticket Title</dt>
+      <dd><input type=text name=ticket_title></dd>
+      <dt>Ticket</dt>
+      <dd><input type=text name=ticket_url></dd>
+      <dt>Maintainer Review</dt>
+      <dd><input type=text name=review_a></dd>
+      <dt>Other Review</dt>
+      <dd><input type=text name=review_b></dd>
+      <dt>Summary</dt>
+      <dd> 
+        <textarea name=summary rows='4' cols='50' form='pr_form'></textarea>
+      </dd>
+      <dt>Setup</dt>
+      <dd> 
+        <textarea name=setup rows='4' cols='50' form='pr_form'></textarea>
+      </dd>
+      <dt>Test</dt>
+      <dd> 
+        <textarea name=test rows='4' cols = '50' form='pr_form'></textarea>
+      </dd>
+      <dt>Verify</dt>
+      <dd> 
+        <textarea name=verify rows='4' cols='50' form='pr_form'></textarea>
+      </dd>
+    </dl>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+{% endblock %}
+

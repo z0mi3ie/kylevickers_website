@@ -1,0 +1,32 @@
+<pre>
+<code>
+# Ticket Link
+[[{{ ticket_number }}] {{ ticket_title }}]({{ ticket_url }})
+
+# Summary
+{{ summary }}
+
+# Reviews
+- [Maintainer]({{ review_a }})
+- [Secondary]({{ review_b }})
+
+# Setup
+```bash
+git remote add {{ git_user }} https://{{ git_host }}/{{ git_user }}/{{ git_repo }}
+git fetch {{ git_user }}
+git checkout {{ git_user }}/{{ git_branch }}
+
+{{ setup }}
+```
+
+# Test
+```bash
+{{ test }}
+```
+
+# Verify
+```bash
+{{ verify }}
+```
+</code>
+</pre>
