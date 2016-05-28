@@ -4,8 +4,10 @@
 <div class="uk-panel">
   <h1>Ticket Info</h1>
   <p>Enter information for a pull request.</p>
-  <form id='pr_form' action="{{ url_for('pull') }}" method='POST' >
+  <form id='pr_form' action="{{ url_for('pull') }}" method='POST'>
     <dl>
+      <dt>Branch URL for Pull Request</dt>
+      <dd><input type=text name=git_branch_url></dd>
       <dt>Ticket Number</dt>
       <dd><input type=text name=ticket_number></dd>
       <dt>Ticket Title</dt>

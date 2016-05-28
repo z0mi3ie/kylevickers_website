@@ -19,7 +19,12 @@ def index():
 def pull():
     # Create the pull request
     if request.method == 'POST':
-        return render_template('pr.html',
+        raw_branch = request.form['git_branch_url']
+        git_stripped = strip_git_info(raw_branch)
+
+        print(git_stripped)
+
+        return render_template('pull/pr.html',
                 ticket_number=request.form['ticket_number'],
                 ticket_title=request.form['ticket_title'],
                 ticket_url=request.form['ticket_url'],
@@ -29,11 +34,40 @@ def pull():
                 setup=request.form['setup'],
                 test=request.form['test'],
                 verify=request.form['verify'],
+                git_user=git_stripped['username'],
+                git_repo=git_stripped['repo'],
+                git_branch=git_stripped['branch'],
+                git_host=git_stripped['host'],
         )
 
     # Display the PR template
     if request.method == 'GET':
-        return render_template('pull.html')
+        return render_template('pull/pull.html')
+
+def strip_git_info(raw_url):
+    """
+    Takes a github branch url ie
+    https://github.com/kvickers/kylevickers_website/tree/branch_name_here
+    and returns a dictionary with important elements stripped
+
+    ['https:', '', 'github.com', 'z0mi3ie', 'kylevickers_website', 'tree', 'pr_template']
+    """
+    HOST = 2
+    USERNAME = 3
+    REPO = 4
+    BRANCH = 6
+
+    splits = raw_url.split('/')
+
+    formatted = {
+        'host': splits[HOST],
+        'username': splits[USERNAME],
+        'repo': splits[REPO],
+        'branch': splits[BRANCH],
+        'raw': raw_url,
+    }
+
+    return formatted
 
 # Start the debug server
 if __name__ == "__main__":
