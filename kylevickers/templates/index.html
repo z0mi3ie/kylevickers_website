@@ -11,38 +11,8 @@
 
 <body>
   <div class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
-    
-    <nav class="uk-navbar">
-
-      <!-- Brand part of navbar -->
-      <a class="uk-navbar-brand" href="{{ url_for('index', method='GET') }}">kylevickers.io</a></li>
-
-      <!-- Left side of navbar -->
-      <ul class="uk-navbar-nav">
-        <li class="uk-parent" data-uk-dropdown>
-          <a href="">Utils</a>
-          <div class="uk-dropdown uk-dropdown-navbar">
-            <ul class="uk-nav uk-nav-navbar">
-              <li><a href="{{ url_for('pull', method='GET') }}">PR Helper</a></li>
-              <li><a href="#">SSH Key Generator</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Resume</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
-        
-      <!-- Right side of navbar -->
-      <div class="uk-navbar-flip">
-        <ul class="uk-navbar-nav">
-          <li><a href="https://github.com/z0mi3ie"><i class="uk-icon-github uk-icon-large uk-text-center"></i></a></li>
-          <li><a href="https://www.linkedin.com/in/kylevickers89"><i class="uk-icon-linkedin uk-icon-large uk-text-center"></i></a></li>
-        </ul>
-      </div>
-
-    </nav>
-
-    <hr>
+   
+    {% include "nav.html" %}
     
     <!-- Changing content section -->
     {% block body %}
@@ -60,6 +30,7 @@
       </p>
     </div>
     {% endblock %}
+    <!-- End of changing content section -->
 
   </div>
 </body>
