@@ -1,0 +1,10 @@
+[run]
+include = 
+    kylevickers/application.py
+    kylevickers/pr/*
+
+omit = 
+    kylevickers/static/
+    venv/*
+    test/*
+
